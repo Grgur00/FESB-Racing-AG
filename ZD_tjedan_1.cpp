@@ -1,7 +1,7 @@
 int pinLed_1=7;
 int pinLed_2=12;
 
-unsigned long interval_off_1=5000;
+unsigned long interval_off_1=2000;
 unsigned long interval_off_2=3000;
 unsigned long interval_on=500;
 
