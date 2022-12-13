@@ -57,7 +57,6 @@ double convert_dec(char *hex){
                 }
 
                 bin[n]=(double)(tempnum);
-                printf("%d,%f\n",n, bin[n]);
                 pointer+=b;
             }
         }
@@ -79,16 +78,10 @@ double convert_dec(char *hex){
             }
 
         }
-
-    for(int i=0;i<n;i++){
-        printf("%.0f\n",bin[i]);
-    }
-
+    
     for(int i=1;i<n+1;i++){
         double exponent=n*1.0-i*1.0;
-        printf("%f,exponent ",exponent);
         dec+=bin[i]*pow(16.0,exponent);
-        printf("bin %f,dec %f, pow :%f \n",bin[i],dec,pow(16.0,(double)(exponent)));
     }
 
     return dec;
@@ -107,8 +100,5 @@ int main()
 
     printf("dec %.0f ",decimal);
     return 0;
-
-
-    printf("nije hexadecimnalni broj");
 
 }
