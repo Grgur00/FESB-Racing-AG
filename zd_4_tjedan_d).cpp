@@ -4,7 +4,7 @@
 MCP_CAN CAN(10); 
 
 void setup() {
-  if (CAN.begin(MCP_ANY,CAN_500KBPS,MCP_16MHZ) == CAN_OK) {
+  if (CAN.begin(MCP_ANY,CAN_500KBPS,MCP_8MHZ) == CAN_OK) {
     Serial.println("MCP2515 initialized successfully");
   } else {
     Serial.println("Error initializing MCP2515");
