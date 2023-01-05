@@ -33,7 +33,7 @@ void loop() {
     byte len;
     byte flag;
     if (CAN.readMsgBuf(&id, &flag, &len, data) == CAN_OK) {
-      parseData(data, 0, 1.0, 0.0, 4); 
+      parseData(data, 0, 1.0, 0.0, 1); 
 
     }
   }
