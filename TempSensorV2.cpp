@@ -103,11 +103,12 @@ void setup()
   Serial.begin(9600);
   if( CAN0.begin(MCP_ANY, CAN_500KBPS, MCP_8MHZ) == CAN_OK)
     Serial.println("Initialized");
+    CAN0.setMode(MCP_NORMAL);
 
   else
     Serial.println("Error initializing");
 
-  CAN0.setMode(MCP_NORMAL);
+
 
 }
 
