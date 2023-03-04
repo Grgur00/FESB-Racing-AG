@@ -1,6 +1,7 @@
 #include "mcp_can.h"
 #include "thermistor.h"
 #include "HardwareSerial.h"
+#include "SPI.h"
 
 MCP_CAN CAN0(53);
 // #define NUM_THERMISTORS 10
@@ -93,20 +94,7 @@ uint8_t convertTemp(float *tempArray){
     
   }
   
-
-
   return *data;
-}
-
-void simulateCAN(uint32_t id, uint8_t *data, uint8_t len) {
-  Serial.print("ID: ");
-  Serial.print(id);
-  Serial.print(" Data: ");
-  for (int i = 0; i < len; i++) {
-    Serial.print(data[i]);
-    Serial.print(" ");
-  }
-  Serial.println();
 }
 
 
@@ -126,7 +114,7 @@ void setup()
 void loop()
 {
 
-    float temperatures[NUM_THERMISTORS];
+  float temperatures[NUM_THERMISTORS];
   for (int i = 0; i < NUM_THERMISTORS; i++) {
     temperatures[i] = thermistors[i].read();
     Serial.print("THERMISTOR ");
@@ -136,8 +124,6 @@ void loop()
   }
 
   CAN0.sendMsgBuf(0x100, 0, NUM_THERMISTORS * 2, convertTemp(temperatures));
-
-  simulateCAN(0x100, convertTemp(temperatures),NUM_THERMISTORS * 2);
 
   delay(2000); //library je napravljen tako da svako ocitavanje jednog termistora traje 100ms  pa delay ne moze bit manji od 1000 za 10 termistora
 }
